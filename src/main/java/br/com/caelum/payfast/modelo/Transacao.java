@@ -24,7 +24,7 @@ public class Transacao {
 	public void setTitular(String titular) {
 		this.titular = titular;
 	}
-	
+
 	public String getNumero() {
 		return numero;
 	}
@@ -43,8 +43,8 @@ public class Transacao {
 
 	@Override
 	public String toString() {
-		return "Transacao [numero=" + numero + ", titular=" + titular + ", data=" + data + ", valor="
-				+ valor + "]";
+		return "Transacao [numero=" + numero + ", titular=" + titular
+				+ ", data=" + data + ", valor=" + valor + "]";
 	}
 
 }

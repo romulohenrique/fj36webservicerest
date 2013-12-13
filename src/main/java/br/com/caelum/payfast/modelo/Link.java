@@ -28,7 +28,5 @@ public class Link {
 	public String toString() {
 		return "Link [rel=" + rel + ", uri=" + uri + ", method=" + method + "]";
 	}
-	
-	
 
 }

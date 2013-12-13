@@ -11,7 +11,7 @@ public class Pagamento {
 	private static final String STATUS_CANCELADO = "CANCELADO";
 	private static final String STATUS_CONFIRMADO = "CONFIRMADO";
 	private static final String STATUS_CRIADO = "CRIADO";
-	
+
 	private Integer id;
 	private String status;
 	private BigDecimal valor;
@@ -26,7 +26,8 @@ public class Pagamento {
 		this.status = STATUS_CRIADO;
 		this.links.clear();
 		this.addLink(new Link("confirmar", "/pagamento/" + this.getId(), "PUT"));
-		this.addLink(new Link("cancelar", "/pagamento/" + this.getId(), "DELETE"));
+		this.addLink(new Link("cancelar", "/pagamento/" + this.getId(),
+				"DELETE"));
 	}
 
 	public void comStatusConfirmado() {
@@ -34,8 +35,8 @@ public class Pagamento {
 		if (this.id == null) {
 			throw new IllegalArgumentException("id do pagamento deve existir");
 		}
-		
-		if(this.status == null || !this.status.equals(STATUS_CRIADO)) {
+
+		if (this.status == null || !this.status.equals(STATUS_CRIADO)) {
 			throw new IllegalStateException("status deve ser " + STATUS_CRIADO);
 		}
 
@@ -49,8 +50,8 @@ public class Pagamento {
 		if (this.id == null) {
 			throw new IllegalArgumentException("id do pagamento deve existir");
 		}
-		
-		if(this.status == null || !this.status.equals(STATUS_CRIADO)) {
+
+		if (this.status == null || !this.status.equals(STATUS_CRIADO)) {
 			throw new IllegalStateException("status deve ser " + STATUS_CRIADO);
 		}
 
@@ -59,7 +60,6 @@ public class Pagamento {
 		this.addLink(new Link("info", "/pagamento/" + this.getId(), "GET"));
 	}
 
-	
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
@@ -80,7 +80,6 @@ public class Pagamento {
 		return id;
 	}
 
-
 	public ArrayList<Link> getLinks() {
 		return links;
 	}
@@ -88,10 +87,10 @@ public class Pagamento {
 	public void addLink(Link link) {
 		this.links.add(link);
 	}
-	
+
 	public Link getLinkPeloRel(String rel) {
 		for (Link link : this.links) {
-			if(link.getRel().equals(rel)) {
+			if (link.getRel().equals(rel)) {
 				return link;
 			}
 		}
@@ -101,18 +100,18 @@ public class Pagamento {
 	public boolean ehCriado() {
 		return STATUS_CRIADO.equals(this.status);
 	}
-	
+
 	public boolean ehConfirmado() {
 		return STATUS_CONFIRMADO.equals(this.status);
 	}
-	
+
 	public boolean ehCancelado() {
 		return STATUS_CANCELADO.equals(this.status);
 	}
 
 	@Override
 	public String toString() {
-		return "Pagamento [id=" + id + ", status=" + status + ", valor=" + valor + ", links="
-				+ links + "]";
+		return "Pagamento [id=" + id + ", status=" + status + ", valor="
+				+ valor + ", links=" + links + "]";
 	}
 }

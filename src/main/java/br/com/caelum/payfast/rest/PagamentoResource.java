@@ -20,36 +20,37 @@ import br.com.caelum.payfast.modelo.Pagamento;
 import br.com.caelum.payfast.modelo.Transacao;
 
 @Path("/v1/pagamento")
-//@Stateless
+// @Stateless
 public class PagamentoResource {
 
-	private static Map<Integer,Pagamento> REPO = new HashMap<>();
+	private static Map<Integer, Pagamento> REPO = new HashMap<>();
 	private static Integer idPagamento = 1;
 
 	// https://developer.paypal.com/docs/api/
 	// https://developer.paypal.com/
-	
+
 	public PagamentoResource() {
 		Pagamento pagamento = new Pagamento();
 		pagamento.setId(idPagamento++);
 		pagamento.setValor(BigDecimal.TEN);
 		REPO.put(pagamento.getId(), pagamento);
 	}
-		
+
 	@POST
-	@Consumes({"application/json"})
-	public Response criarPagamento(Transacao transacao) throws URISyntaxException  {
+	@Consumes({ "application/json" })
+	public Response criarPagamento(Transacao transacao)
+			throws URISyntaxException {
 
 		Pagamento pagamento = new Pagamento();
 		pagamento.setId(nextId());
 		pagamento.setValor(transacao.getValor());
 		pagamento.comStatusCriado();
-		
+
 		REPO.put(pagamento.getId(), pagamento);
 
 		System.out.println("PAGAMENTO CRIADO " + pagamento);
-		return Response.created(new URI("/pagamento/" + pagamento.getId())).entity(pagamento)
-				.type(MediaType.APPLICATION_JSON).build();
+		return Response.created(new URI("/pagamento/" + pagamento.getId()))
+				.entity(pagamento).type(MediaType.APPLICATION_JSON).build();
 	}
 
 	private Integer nextId() {
@@ -58,7 +59,8 @@ public class PagamentoResource {
 
 	@PUT
 	@Path("/{id}")
-	@Produces("application/json") //cuidado javax.ws.rs
+	@Produces("application/json")
+	// cuidado javax.ws.rs
 	public Pagamento confirmarPagamento(@PathParam("id") Integer pagamentoId) {
 		Pagamento pagamento = REPO.get(pagamentoId);
 		pagamento.comStatusConfirmado();
@@ -68,10 +70,9 @@ public class PagamentoResource {
 
 	@GET
 	@Path("/{id}")
-	@Produces({"application/json", "application/xml"}) 
+	@Produces({ "application/json", "application/xml" })
 	public Pagamento buscaPagamento(@PathParam("id") Integer id) {
 		return REPO.get(id);
 	}
 
-	
 }
