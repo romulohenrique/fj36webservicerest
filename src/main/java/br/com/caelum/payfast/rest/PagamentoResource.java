@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 import br.com.caelum.payfast.modelo.Pagamento;
 import br.com.caelum.payfast.modelo.Transacao;
 
-@Path("/pagamento/v1")
+@Path("/v1/pagamento")
 //@Stateless
 public class PagamentoResource {
 
