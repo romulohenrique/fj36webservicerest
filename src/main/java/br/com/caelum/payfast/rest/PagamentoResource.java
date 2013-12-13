@@ -6,7 +6,6 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -21,7 +20,7 @@ import br.com.caelum.payfast.modelo.Pagamento;
 import br.com.caelum.payfast.modelo.Transacao;
 
 @Path("/pagamento/v1")
-@Stateless
+//@Stateless
 public class PagamentoResource {
 
 	private static Map<Integer,Pagamento> REPO = new HashMap<>();

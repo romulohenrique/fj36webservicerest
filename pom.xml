@@ -32,12 +32,6 @@
 			<artifactId>resteasy-jaxb-provider</artifactId>
 			<version>3.0.5.Final</version>
 		</dependency>
-            
-		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>ejb-api</artifactId>
-			<version>3.0</version>
-		</dependency>
 
 	</dependencies>
 	<build>
