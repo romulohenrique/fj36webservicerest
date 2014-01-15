@@ -37,7 +37,7 @@ import br.com.caelum.payfast.rest.PagamentoSeguroResource;
  */
 public class Oauth2Filter implements Filter {
 
-	private static final String OAUTH_SERVER_URL = "http://fj36-webservice-oauthserver.herokuapp.com/";
+	private static final String OAUTH_SERVER_URL = "http://fj36webservicerest-oauthserver.herokuapp.com/";
 	private static String RESOURCE_SERVER_NAME = "pagamentos";
 		
     @Override
