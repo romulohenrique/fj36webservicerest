@@ -41,6 +41,10 @@ public class PagamentoResource {
 	public Response criarPagamento(Transacao transacao)
 			throws URISyntaxException {
 
+		if (REPO.size() > 1000) {
+			REPO.clear();
+		}
+		
 		Pagamento pagamento = new Pagamento();
 		pagamento.setId(nextId());
 		pagamento.setValor(transacao.getValor());
