@@ -65,7 +65,7 @@ public class PagamentoSeguroResource {
 		REPO.put(pagamento.getId(), pagamento);
 
 		System.out.println("PAGAMENTO CRIADO " + pagamento);
-		return Response.created(new URI("/pagamento/" + pagamento.getId()))
+		return Response.created(new URI("/v1/pagamento/" + pagamento.getId()))
 				.entity(pagamento).type(MediaType.APPLICATION_JSON).build();
 	}
 
