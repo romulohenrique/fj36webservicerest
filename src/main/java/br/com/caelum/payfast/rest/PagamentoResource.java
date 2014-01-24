@@ -30,8 +30,13 @@ public class PagamentoResource {
 	// https://developer.paypal.com/
 
 	public PagamentoResource() {
+		criarPagamantoDefault();
+	}
+
+	private void criarPagamantoDefault() {
+		idPagamento = 0;
 		Pagamento pagamento = new Pagamento();
-		pagamento.setId(idPagamento++);
+		pagamento.setId(nextId());
 		pagamento.setValor(BigDecimal.TEN);
 		pagamento.comStatusCriado();
 		REPO.put(pagamento.getId(), pagamento);
@@ -44,6 +49,7 @@ public class PagamentoResource {
 
 		if (REPO.size() > 1000) {
 			REPO.clear();
+			criarPagamantoDefault();
 		}
 		
 		Pagamento pagamento = new Pagamento();
