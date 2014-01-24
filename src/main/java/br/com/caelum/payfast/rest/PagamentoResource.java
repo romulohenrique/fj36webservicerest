@@ -33,11 +33,12 @@ public class PagamentoResource {
 		Pagamento pagamento = new Pagamento();
 		pagamento.setId(idPagamento++);
 		pagamento.setValor(BigDecimal.TEN);
+		pagamento.comStatusCriado();
 		REPO.put(pagamento.getId(), pagamento);
 	}
 
 	@POST
-	@Consumes({ "application/json" })
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Response criarPagamento(Transacao transacao)
 			throws URISyntaxException {
 
@@ -63,7 +64,7 @@ public class PagamentoResource {
 
 	@PUT
 	@Path("/{id}")
-	@Produces("application/json")
+	@Produces(MediaType.APPLICATION_JSON)
 	// cuidado javax.ws.rs
 	public Pagamento confirmarPagamento(@PathParam("id") Integer pagamentoId) {
 		Pagamento pagamento = REPO.get(pagamentoId);
@@ -74,7 +75,7 @@ public class PagamentoResource {
 
 	@GET
 	@Path("/{id}")
-	@Produces({ "application/json", "application/xml" })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Pagamento buscaPagamento(@PathParam("id") Integer id) {
 		return REPO.get(id);
 	}
