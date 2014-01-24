@@ -25,8 +25,8 @@ public class Pagamento {
 
 		this.status = STATUS_CRIADO;
 		this.links.clear();
-		this.addLink(new Link("confirmar", "/pagamento/" + this.getId(), "PUT"));
-		this.addLink(new Link("cancelar", "/pagamento/" + this.getId(),
+		this.addLink(new Link("confirmar", "/v1/pagamento/" + this.getId(), "PUT"));
+		this.addLink(new Link("cancelar", "/v1/pagamento/" + this.getId(),
 				"DELETE"));
 	}
 
@@ -42,7 +42,7 @@ public class Pagamento {
 
 		this.status = STATUS_CONFIRMADO;
 		this.links.clear();
-		this.addLink(new Link("info", "/pagamento/" + this.getId(), "GET"));
+		this.addLink(new Link("info", "/v1/pagamento/" + this.getId(), "GET"));
 	}
 
 	public void comStatusCancelado() {
@@ -57,7 +57,7 @@ public class Pagamento {
 
 		this.status = STATUS_CANCELADO;
 		this.links.clear();
-		this.addLink(new Link("info", "/pagamento/" + this.getId(), "GET"));
+		this.addLink(new Link("info", "/v1/pagamento/" + this.getId(), "GET"));
 	}
 
 	public void setValor(BigDecimal valor) {
